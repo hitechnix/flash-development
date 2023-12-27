@@ -33,6 +33,6 @@ jobs:
           context: images/php/8.1
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.DOCKER_IMAGE }}:8.1
+          tags: ${{ secrets.DOCKER_PHP_IMAGE }}:8.1
           cache-from: type=gha
           cache-to: type=gha,mode=max

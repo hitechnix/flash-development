@@ -33,6 +33,6 @@ jobs:
           context: images/nginx/1.18
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.DOCKER_IMAGE }}:1.18
+          tags: ${{ secrets.DOCKER_NGINX_IMAGE }}:1.18
           cache-from: type=gha
           cache-to: type=gha,mode=max
