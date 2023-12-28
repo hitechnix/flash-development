@@ -26,7 +26,7 @@ In order to install docker Ubuntu, you will need to meet the following requireme
 
 ### 📋 Features
 
-- Easy switch between PHP versions: 8.3, 8.2, 8.1, 8.0 7.4, 7.3, 7.2, 7.1, 5.6…
+- Easy switch between PHP versions: 8.3, 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1, 5.6…
 - Choose your favorite database engine: MySQL, Postgres, MariaDB…
 - Run your own stack: Memcached, HHVM, RabbitMQ…
 - Each software runs on its own container: PHP-FPM, NGINX, PHP-CLI…
@@ -101,5 +101,35 @@ If you discover any security related issues, please email support@hitechnix.com 
 This software is released under the [BSD 3-Clause][link-license] License. Please see the [LICENSE](LICENSE) file
 or https://opensource.hitechnix.com/LICENSE.txt for more information.
 
+### ✨ Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <td align="center" valign="top" width="14.28%">
+    <a href="https://trants.io">
+      <img src="https://avatars.githubusercontent.com/u/40693126?v=4?s=100" width="100px;" alt="Son Tran Thanh" />
+      <br />
+      <sub>
+        <b>Son Tran Thanh</b>
+      </sub>
+    </a>
+    <br />
+    <a href="https://github.com/hitechnix/flash-development/commits?author=trants" title="Code">💻</a>
+  </td>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification.
+Contributions of any kind welcome!
+
 [link-docs]:https://opensource.hitechnix.com/flash-development
+
 [link-license]: https://opensource.org/license/bsd-3-clause
