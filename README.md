@@ -118,6 +118,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       </sub>
     </a>
     <br />
+    <a href="#maintenance-trants" title="Maintenance">🚧</a>
     <a href="https://github.com/hitechnix/flash-development/commits?author=trants" title="Code">💻</a>
   </td>
 </table>
