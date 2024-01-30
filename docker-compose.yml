@@ -1,0 +1,80 @@
+version: "3.9"
+
+services:
+  nginx:
+    container_name: nginx
+    restart: always
+    image: hitechnix/nginx:1.18
+    ports:
+      - ${NGINX_PORT:-80}:80
+      - ${NGINX_HTTPS_PORT:-443}:443
+    volumes: &appvolumes
+      - ./docker/nginx/sites-enabled:/etc/nginx/conf.d
+      - ./src:/var/www:cached
+      - ~/.composer:/var/www/.composer:cached
+      - ~/.ssh/id_rsa:/var/www/.ssh/id_rsa:cached
+      - ~/.ssh/known_hosts:/var/www/.ssh/known_hosts:cached
+      - sockdata:/sock
+      - ssldata:/etc/nginx/certs
+    depends_on:
+      - phpfpm
+      - mariadb
+      - postgresql
+    extra_hosts: &appextrahosts
+      - "*:172.17.0.1"
+    networks:
+      - network-bridge
+
+  phpfpm:
+    container_name: php-fpm
+    restart: always
+    image: hitechnix/php:8.2
+    volumes: *appvolumes
+    extra_hosts: *appextrahosts
+    environment:
+      - BLACKFIRE_CLIENT_ID=${BLACKFIRE_CLIENT_ID}
+      - BLACKFIRE_CLIENT_TOKEN=${BLACKFIRE_CLIENT_TOKEN}
+      - COMPOSER_DISABLE_XDEBUG_WARN=${COMPOSER_DISABLE_XDEBUG_WARN:-1}
+      - PHP_CS_FIXER_IGNORE_ENV=${PHP_CS_FIXER_IGNORE_ENV:-1}
+    networks:
+      - network-bridge
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:lts
+    ports:
+      - ${MARIA_DB_PORT:-3306}:3306
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+    command:
+      --max_allowed_packet=64M
+      --optimizer_use_condition_selectivity=1
+      --optimizer_switch="rowid_filter=off"
+    networks:
+      - network-bridge
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:16-alpine
+    ports:
+      - ${POSTGRES_DB_PORT:-5432}:5432
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-root}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-root}
+    networks:
+      - network-bridge
+
+volumes:
+  mariadb-data:
+  postgresql-data:
+  sockdata:
+  ssldata:
+
+networks:
+  network-bridge:
+    driver: bridge
+    name: network-bridge
