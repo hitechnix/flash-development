@@ -57,7 +57,7 @@ git clone https://github.com/hitechnix/flash-development.git \
 
 3. Edit environment variable
 
-```bash
+```dotenv
 # Nginx
 NGINX_PORT=
 NGINX_HTTPS_PORT=

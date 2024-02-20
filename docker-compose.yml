@@ -14,8 +14,8 @@ services:
       - ~/.composer:/var/www/.composer:cached
       - ~/.ssh/id_rsa:/var/www/.ssh/id_rsa:cached
       - ~/.ssh/known_hosts:/var/www/.ssh/known_hosts:cached
-      - sockdata:/sock
-      - ssldata:/etc/nginx/certs
+      - sock-data:/sock
+      - ssl-gidata:/etc/nginx/certs
     depends_on:
       - phpfpm
       - mariadb
@@ -41,6 +41,7 @@ services:
 
   mariadb:
     container_name: mariadb
+    restart: always
     image: mariadb:lts
     ports:
       - ${MARIA_DB_PORT:-3306}:3306
@@ -57,6 +58,7 @@ services:
 
   postgresql:
     container_name: postgresql
+    restart: always
     image: postgres:16-alpine
     ports:
       - ${POSTGRES_DB_PORT:-5432}:5432
@@ -71,8 +73,8 @@ services:
 volumes:
   mariadb-data:
   postgresql-data:
-  sockdata:
-  ssldata:
+  sock-data:
+  ssl-data:
 
 networks:
   network-bridge:
