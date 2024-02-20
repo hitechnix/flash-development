@@ -1,8 +1,7 @@
 # Flash Development
 
 This repository allows you to quickly get a development environment up and running using Docker, including a MySQL,
-PostgreSQL
-database and some debugging tools.
+PostgreSQL database and some debugging tools.
 
 This environment includes the latest versions of the following software:
 

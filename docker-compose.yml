@@ -15,7 +15,7 @@ services:
       - ~/.ssh/id_rsa:/var/www/.ssh/id_rsa:cached
       - ~/.ssh/known_hosts:/var/www/.ssh/known_hosts:cached
       - sock-data:/sock
-      - ssl-gidata:/etc/nginx/certs
+      - ssl-data:/etc/nginx/certs
     depends_on:
       - phpfpm
       - mariadb
